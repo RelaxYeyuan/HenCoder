@@ -33,6 +33,21 @@ public class Dashboard extends View {
     private PathMeasure pathMeasure;
     private PathDashPathEffect pathDashPathEffect;
 
+    /**
+     * 刻度个数
+     */
+    private float markNumber;
+
+    /**
+     * 刻度间距
+     */
+    private int markSpace = 15;
+
+    /**
+     * 刻度宽度
+     */
+    private int markWidth = 5;
+
     public Dashboard(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
     }
@@ -42,15 +57,18 @@ public class Dashboard extends View {
         paint.setStyle(Paint.Style.STROKE);
         paint.setStrokeWidth(Utils.dp2px(6));
 
-        path.addRect(0, 0, Utils.dp2px(5), Utils.dp2px(12), Path.Direction.CW);
+        path.addRect(0, 0, Utils.dp2px(markWidth), Utils.dp2px(12), Path.Direction.CW);
 
         Path arc = new Path();
         arc.addArc(-RADIUS, -RADIUS, RADIUS, RADIUS,
                 90 + ANGLE / 2, 360 - ANGLE);
         pathMeasure = new PathMeasure(arc, false);
 
-        pathDashPathEffect = new PathDashPathEffect(path, (pathMeasure.getLength() -
-                Utils.dp2px(5)) / 15, 0, PathDashPathEffect.Style.ROTATE);
+        //需要减去刻度的宽度
+        markNumber = (pathMeasure.getLength() - Utils.dp2px(markWidth)) / markSpace;
+
+        pathDashPathEffect = new PathDashPathEffect(path, markNumber,
+                0, PathDashPathEffect.Style.ROTATE);
 
         Log.d(TAG, "instance initializer: " + getWidth());
     }
@@ -64,10 +82,13 @@ public class Dashboard extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+
+        //画弧线
         canvas.drawArc(getWidth() / 2 - RADIUS, getHeight() / 2 - RADIUS,
                 getWidth() / 2 + RADIUS, getHeight() / 2 + RADIUS,
                 90 + ANGLE / 2, 360 - ANGLE, false, paint);
 
+        //画刻度
         paint.setPathEffect(pathDashPathEffect);
 
         canvas.drawArc(getWidth() / 2 - RADIUS, getHeight() / 2 - RADIUS,
@@ -76,9 +97,24 @@ public class Dashboard extends View {
 
         paint.setPathEffect(null);
 
+        //画圆心
         canvas.drawCircle(getWidth() / 2, getHeight() / 2, 6, paint);
 
-        Log.d(TAG, "onDraw: " + getWidth());
+        //画指针 获取指针终点的绝对位置
+        canvas.drawLine(getWidth() / 2, getHeight() / 2,
+                (float) Math.cos(Math.toRadians(getAngleFromMark(5))) * LENGTH + getWidth() / 2,
+                (float) Math.sin(Math.toRadians(getAngleFromMark(5))) * LENGTH + getHeight() / 2,
+                paint);
+
+        Log.d(TAG, "onDraw: " + getWidth() / 2);
+    }
+
+    /**
+     * 获取刻度的对应的角度
+     */
+    private int getAngleFromMark(int mark) {
+        float markAngle = (360 - ANGLE) / markSpace;
+        return (int) (90 + (float) ANGLE / 2 + markAngle * mark);
     }
 
     @Override
