@@ -1,6 +1,8 @@
 package semisky.com.animation;
 
 import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.util.TypedValue;
 
 /**
@@ -16,4 +18,20 @@ public class Utils {
         return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, Resources.getSystem().getDisplayMetrics());
     }
 
+    /**
+     * 兼容性配置
+     */
+    public static float getZForCamera() {
+        return -8 * Resources.getSystem().getDisplayMetrics().density;
+    }
+
+    public static Bitmap getAvatar(Resources resources, int width) {
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inJustDecodeBounds = true;
+        BitmapFactory.decodeResource(resources, R.mipmap.burning, options);
+        options.inJustDecodeBounds = false;
+        options.inDensity = options.outWidth;
+        options.inTargetDensity = width;
+        return BitmapFactory.decodeResource(resources, R.mipmap.burning, options);
+    }
 }
