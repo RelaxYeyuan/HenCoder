@@ -26,9 +26,11 @@ public class CircleView extends View {
         return radius;
     }
 
+    //会通过反射设置值
     public void setRadius(float radius) {
         this.radius = radius;
-        invalidate();//16ms 会去刷新  "1000/60帧"？
+        invalidate();//设置标记，通知Android刷新这个view
+        // 16ms 会去刷新  "1000/60帧"？
     }
 
     public CircleView(Context context, @Nullable AttributeSet attrs) {
@@ -42,6 +44,6 @@ public class CircleView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        canvas.drawCircle(getWidth() / 2, getHeight() / 2, radius, paint);
+        canvas.drawCircle(getWidth() / 2, getHeight() / 2, getRadius(), paint);
     }
 }

@@ -25,6 +25,9 @@ public class Utils {
         return -8 * Resources.getSystem().getDisplayMetrics().density;
     }
 
+    /**
+     * 获取指定宽度图片
+     */
     public static Bitmap getAvatar(Resources resources, int width) {
         BitmapFactory.Options options = new BitmapFactory.Options();
         options.inJustDecodeBounds = true;
