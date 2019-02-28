@@ -2,6 +2,7 @@ package com.yeyuan.hencoder;
 
 import android.content.res.Resources;
 import android.util.TypedValue;
+import android.view.View;
 
 /**
  * Created by chenhongrui on 2018/10/24
@@ -16,4 +17,21 @@ public class Utils {
         return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, Resources.getSystem().getDisplayMetrics());
     }
 
+
+    public static int getDefaultSize(int size, int measureSpec) {
+        int result = size;
+        int specMode = View.MeasureSpec.getMode(measureSpec);
+        int specSize = View.MeasureSpec.getSize(measureSpec);
+
+        switch (specMode) {
+            case View.MeasureSpec.UNSPECIFIED:
+                result = size;
+                break;
+            case View.MeasureSpec.AT_MOST:
+            case View.MeasureSpec.EXACTLY:
+                result = specSize;
+                break;
+        }
+        return result;
+    }
 }

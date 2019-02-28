@@ -16,7 +16,7 @@ import android.view.View;
 /**
  * Created by admin on 2018/10/27
  * <p>
- * 内容摘要：${TODO}
+ * 内容摘要：可以加入手势缩放，加入相机拍照，实现头像裁剪
  * 版权所有: YEYUAN
  * 修改内容：
  * 修改日期
@@ -45,11 +45,11 @@ public class AvatarView extends View {
         super.onDraw(canvas);
 
         //画黑边
-        canvas.drawOval(padding, padding, padding + WIDTH, padding + WIDTH, paint);
+//        canvas.drawOval(padding, padding, padding + WIDTH, padding + WIDTH, paint);
         //设置离屏缓冲(提前把圆形矩形图片扣下来做处理)
         int saved = canvas.saveLayer(savedArea, paint);
-        canvas.drawOval(padding + edgeWidth, padding + edgeWidth,
-                padding + WIDTH - edgeWidth, padding + WIDTH - edgeWidth,
+        canvas.drawOval(padding + edgeWidth - 250, padding + edgeWidth- 250,
+                padding + WIDTH - edgeWidth- 250, padding + WIDTH - edgeWidth- 250,
                 paint);
         //设置为圆形的原图
         paint.setXfermode(xfermode);

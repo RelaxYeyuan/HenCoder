@@ -61,7 +61,7 @@ public class Dashboard extends View {
 
         Path arc = new Path();
         arc.addArc(-RADIUS, -RADIUS, RADIUS, RADIUS,
-                90 + ANGLE / 2, 360 - ANGLE);
+                90 + ANGLE / 2f, 360 - ANGLE);
         pathMeasure = new PathMeasure(arc, false);
 
         //需要减去刻度的宽度
@@ -84,29 +84,29 @@ public class Dashboard extends View {
         super.onDraw(canvas);
 
         //画弧线
-        canvas.drawArc(getWidth() / 2 - RADIUS, getHeight() / 2 - RADIUS,
-                getWidth() / 2 + RADIUS, getHeight() / 2 + RADIUS,
-                90 + ANGLE / 2, 360 - ANGLE, false, paint);
+        canvas.drawArc(getWidth() / 2f - RADIUS, getHeight() / 2f - RADIUS,
+                getWidth() / 2f + RADIUS, getHeight() / 2f + RADIUS,
+                90 + ANGLE / 2f, 360 - ANGLE, false, paint);
 
         //画刻度
         paint.setPathEffect(pathDashPathEffect);
 
-        canvas.drawArc(getWidth() / 2 - RADIUS, getHeight() / 2 - RADIUS,
-                getWidth() / 2 + RADIUS, getHeight() / 2 + RADIUS,
-                90 + ANGLE / 2, 360 - ANGLE, false, paint);
+        canvas.drawArc(getWidth() / 2f - RADIUS, getHeight() / 2f - RADIUS,
+                getWidth() / 2f + RADIUS, getHeight() / 2f + RADIUS,
+                90 + ANGLE / 2f, 360 - ANGLE, false, paint);
 
         paint.setPathEffect(null);
 
         //画圆心
-        canvas.drawCircle(getWidth() / 2, getHeight() / 2, 6, paint);
+        canvas.drawCircle(getWidth() / 2f, getHeight() / 2f, 6, paint);
 
         //画指针 获取指针终点的绝对位置
-        canvas.drawLine(getWidth() / 2, getHeight() / 2,
-                (float) Math.cos(Math.toRadians(getAngleFromMark(5))) * LENGTH + getWidth() / 2,
-                (float) Math.sin(Math.toRadians(getAngleFromMark(5))) * LENGTH + getHeight() / 2,
+        canvas.drawLine(getWidth() / 2f, getHeight() / 2f,
+                (float) Math.cos(Math.toRadians(getAngleFromMark(5))) * LENGTH + getWidth() / 2f,
+                (float) Math.sin(Math.toRadians(getAngleFromMark(5))) * LENGTH + getHeight() / 2f,
                 paint);
 
-        Log.d(TAG, "onDraw: " + getWidth() / 2);
+        Log.d(TAG, "onDraw: " + getWidth() / 2f);
     }
 
     /**
@@ -114,7 +114,7 @@ public class Dashboard extends View {
      */
     private int getAngleFromMark(int mark) {
         float markAngle = (360 - ANGLE) / markSpace;
-        return (int) (90 + (float) ANGLE / 2 + markAngle * mark);
+        return (int) (90 + (float) ANGLE / 2f + markAngle * mark);
     }
 
     @Override
