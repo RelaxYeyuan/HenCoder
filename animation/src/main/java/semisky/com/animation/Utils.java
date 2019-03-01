@@ -37,4 +37,17 @@ public class Utils {
         options.inTargetDensity = width;
         return BitmapFactory.decodeResource(resources, R.mipmap.burning, options);
     }
+
+    /**
+     * 获取指定宽度图片
+     */
+    public static Bitmap getFlipboard(Resources resources, int width) {
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inJustDecodeBounds = true;
+        BitmapFactory.decodeResource(resources, R.mipmap.flipboard_icon, options);
+        options.inJustDecodeBounds = false;
+        options.inDensity = options.outWidth;
+        options.inTargetDensity = width;
+        return BitmapFactory.decodeResource(resources, R.mipmap.flipboard_icon, options);
+    }
 }
