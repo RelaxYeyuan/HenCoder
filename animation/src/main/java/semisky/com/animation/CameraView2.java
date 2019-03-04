@@ -4,6 +4,7 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
+import android.animation.PropertyValuesHolder;
 import android.content.Context;
 import android.graphics.Camera;
 import android.graphics.Canvas;
@@ -19,6 +20,11 @@ import android.view.View;
  * 流程：要先移动camera坐标系到原点（0,0）,再进行rotate,然后再移动回来
  * 难点：1.对于camera坐标系，绘制顺序要反着来(正常先画图 - 负方向移动 - 旋转 - 正方向移动) - > (实际先正方向移动 - 旋转 - 负方向移动 - 画图)
  * 2.setLocation()
+ * <p>
+ * AnimatorSet
+ * 1.按照顺序做动画
+ * PropertyValuesHolder
+ * 1.同时做动画
  * 版权所有: YEYUAN
  * 修改内容：
  * 修改日期
@@ -45,7 +51,10 @@ public class CameraView2 extends View {
         camera.setLocation(0, 0, Utils.getZForCamera());
     }
 
-    public void startAnim() {
+    /**
+     * 按照顺序做动画
+     */
+    public void startObjectAnim() {
         ObjectAnimator leftAnim = ObjectAnimator.ofFloat(this, "leftFlip", 45);
 
         ObjectAnimator rightAnim = ObjectAnimator.ofFloat(this, "rightFlip", -45);
@@ -53,6 +62,7 @@ public class CameraView2 extends View {
         ObjectAnimator rotationAnim = ObjectAnimator.ofFloat(this, "flipRotation", 270);
 
         AnimatorSet animatorSet = new AnimatorSet();
+        //先执行右侧翻转动画，再执行旋转动画，再执行左侧翻转动画
         animatorSet.playSequentially(rightAnim, rotationAnim, leftAnim);
         animatorSet.setDuration(1500);
         animatorSet.setStartDelay(200);
@@ -66,6 +76,20 @@ public class CameraView2 extends View {
 //                startAnim();
             }
         });
+    }
+
+    /**
+     * 同时做动画
+     */
+    public void startPropertyValuesAnim() {
+        PropertyValuesHolder leftAnimHolder = PropertyValuesHolder.ofFloat("leftFlip", 45);
+        PropertyValuesHolder rightAnimHolder = PropertyValuesHolder.ofFloat("rightFlip", -45);
+        PropertyValuesHolder rotationAnimHolder = PropertyValuesHolder.ofFloat("flipRotation", 270);
+
+        ObjectAnimator objectAnimator = ObjectAnimator.ofPropertyValuesHolder(this, leftAnimHolder, rightAnimHolder, rotationAnimHolder);
+        objectAnimator.setDuration(1500);
+        objectAnimator.setStartDelay(200);
+        objectAnimator.start();
     }
 
     private void resetView() {

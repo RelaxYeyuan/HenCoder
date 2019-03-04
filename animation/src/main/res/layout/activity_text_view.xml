@@ -1,21 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".TextViewActivity">
 
     <!--<semisky.com.animation.ShadeTextView-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="青春猪头少年不会梦到兔女郎学姐"-->
-        <!--/>-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="青春猪头少年不会梦到兔女郎学姐"-->
+    <!--/>-->
 
-    <semisky.com.animation.CameraView2
-        android:id="@+id/cameraView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+    <!--<semisky.com.animation.CameraView2-->
+    <!--android:id="@+id/cameraView2"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"/>-->
 
-</android.support.constraint.ConstraintLayout>
+    <!--<semisky.com.animation.PointView-->
+    <!--android:id="@+id/pointView"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"/>-->
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#30000000">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorAccent">
+
+        <semisky.com.animation.MaterialEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="User Name"/>
+    </FrameLayout>
+
+</LinearLayout>
