@@ -21,7 +21,7 @@ public class CameraActivity extends AppCompatActivity {
         cameraView = findViewById(R.id.cameraView);
 
         ObjectAnimator bottomFlipAnimator = ObjectAnimator
-                .ofFloat(cameraView, "rightFlip", 45);
+                .ofFloat(cameraView, "topFlip", 45);
         bottomFlipAnimator.setStartDelay(1000);
 
         ObjectAnimator flipRotationAnimator = ObjectAnimator
@@ -29,7 +29,7 @@ public class CameraActivity extends AppCompatActivity {
         flipRotationAnimator.setStartDelay(1000);
 
         ObjectAnimator topFlipAnimator = ObjectAnimator
-                .ofFloat(cameraView, "leftFlip", -45);
+                .ofFloat(cameraView, "bottomFlip", -45);
         topFlipAnimator.setStartDelay(1000);
 
         //组合动画 按顺序做动画
@@ -39,11 +39,11 @@ public class CameraActivity extends AppCompatActivity {
         animatorSet.start();
 
         //对于同一个view同时做动画
-        PropertyValuesHolder bottomFlipHolder = PropertyValuesHolder.ofFloat("rightFlip"
+        PropertyValuesHolder bottomFlipHolder = PropertyValuesHolder.ofFloat("topFlip"
                 , 45);
         PropertyValuesHolder flipRotationHolder = PropertyValuesHolder.ofFloat("flipRotation"
                 , 270);
-        PropertyValuesHolder topFlipHolder = PropertyValuesHolder.ofFloat("leftFlip"
+        PropertyValuesHolder topFlipHolder = PropertyValuesHolder.ofFloat("bottomFlip"
                 , -45);
         ObjectAnimator objectAnimator = ObjectAnimator.ofPropertyValuesHolder(cameraView, bottomFlipHolder,
                 flipRotationHolder, topFlipHolder);

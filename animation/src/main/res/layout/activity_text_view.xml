@@ -14,35 +14,38 @@
     <!--android:text="青春猪头少年不会梦到兔女郎学姐"-->
     <!--/>-->
 
-    <!--<semisky.com.animation.CameraView2-->
-    <!--android:id="@+id/cameraView2"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"/>-->
+    <semisky.com.animation.CameraView2
+    android:id="@+id/cameraView2"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"/>
 
     <!--<semisky.com.animation.PointView-->
     <!--android:id="@+id/pointView"-->
     <!--android:layout_width="wrap_content"-->
     <!--android:layout_height="wrap_content"/>-->
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#30000000">
+    <!--<FrameLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:background="#30000000">-->
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </FrameLayout>
+        <!--<EditText-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content" />-->
+    <!--</FrameLayout>-->
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorAccent">
+    <!--<FrameLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:background="@color/colorAccent">-->
 
-        <semisky.com.animation.MaterialEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="User Name"/>
-    </FrameLayout>
+        <!--<semisky.com.animation.MaterialEditText-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:hint="User Name"/>-->
+    <!--</FrameLayout>-->
 
+    <!--<semisky.com.animation.ColorChangeCircle-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"/>-->
 </LinearLayout>
