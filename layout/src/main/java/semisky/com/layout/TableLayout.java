@@ -80,7 +80,7 @@ public class TableLayout extends ViewGroup {
 
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
-        //1.确认子view的大小
+        //1.确认子view的位置
         for (int i = 0; i < getChildCount(); i++) {
             View childAt = getChildAt(i);
             Rect rect = childrenBounds.get(i);
