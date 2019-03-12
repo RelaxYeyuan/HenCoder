@@ -14,10 +14,10 @@
     <!--android:text="青春猪头少年不会梦到兔女郎学姐"-->
     <!--/>-->
 
-    <semisky.com.animation.CameraView2
-    android:id="@+id/cameraView2"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"/>
+    <!--<semisky.com.animation.CameraView2-->
+    <!--android:id="@+id/cameraView2"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"/>-->
 
     <!--<semisky.com.animation.PointView-->
     <!--android:id="@+id/pointView"-->
@@ -45,7 +45,4 @@
             <!--android:hint="User Name"/>-->
     <!--</FrameLayout>-->
 
-    <!--<semisky.com.animation.ColorChangeCircle-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"/>-->
 </LinearLayout>
